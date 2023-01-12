@@ -1,12 +1,12 @@
 import React from "react";
 import { Reset } from "styled-reset";
-import { Loginpage } from "./components/login";
+import { Router } from "./router";
 
 function App() {
   return (
     <>
       <Reset />
-      <Loginpage />
+      <Router />
     </>
   );
 }
