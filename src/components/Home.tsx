@@ -5,6 +5,8 @@ import Cookies from "universal-cookie";
 import { Dispatch } from "redux";
 import { addToken, removeToken } from "../stores/tokenStore";
 import { connect } from "react-redux";
+import { motion } from "framer-motion";
+import bunny from "../assets/images/bunny.png";
 
 const cookies = new Cookies();
 
@@ -33,6 +35,24 @@ interface IProps {
 const HomeContainer = styled.main`
   width: 100%;
   height: 100vh;
+`;
+
+const RabbitIsOn = styled(motion.img)`
+  z-index: 1;
+  position: absolute;
+  width: 9.8%;
+  bottom: 19.4%;
+  left: 27.4%;
+  opacity: 1;
+  border-radius: 13px;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  :hover {
+    cursor: url(${bunny}) 6 6, url(${bunny}) 6 6, auto;
+  }
 `;
 
 const Home = ({ userToken, addTokenLocal, removeTokenLocal }: IProps) => {
@@ -124,6 +144,12 @@ const Home = ({ userToken, addTokenLocal, removeTokenLocal }: IProps) => {
           </form>
         </div>
       )}
+      <RabbitIsOn
+        drag
+        dragConstraints={{ top: -500, right: 800, bottom: 100, left: -200 }}
+        transition={{ mass: 0, bounce: 1, damping: 1, type: "spring" }}
+        src={bunny}
+      ></RabbitIsOn>
     </HomeContainer>
   );
 };
